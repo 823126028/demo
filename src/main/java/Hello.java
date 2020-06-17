@@ -5,6 +5,7 @@ public class Hello {
                 System.out.println("running");
                 Thread.sleep(1000);
             } catch (Exception e) {
+                System.out.println("abc");
                 e.printStackTrace();
             }
         }
