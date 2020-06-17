@@ -5,6 +5,7 @@ stages:
       image: maven:3-jdk-7
       shellScript: |-
         mvn clean install
+        mkdir -p /root/.m2 && mv setting.xml /root/.m2
 - name: Publish
   steps:
   - publishImageConfig:

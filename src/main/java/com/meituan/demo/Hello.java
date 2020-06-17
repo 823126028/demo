@@ -1,3 +1,5 @@
+package com.meituan.demo;
+
 public class Hello {
     public static void main(String[] args) {
         while (true) {
