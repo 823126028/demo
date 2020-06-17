@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bluehouse-service
+spec:
+  selector:
+    app: bluehouse
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-bluehouse
+  labels:
+    app: bluehouse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bluehouse
+  template:
+    metadata:
+      labels:
+        app: bluehouse
+    spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: maven
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        ports:
+        - containerPort: 8080
