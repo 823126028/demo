@@ -18,7 +18,7 @@ metadata:
   labels:
     app: bluehouse
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: bluehouse
@@ -34,3 +34,12 @@ spec:
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            cpu: 0.2
+            memory: 256Mi
+          limits:
+            cpu: 0.4
+            memory: 512Mi
+
+
