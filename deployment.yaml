@@ -42,15 +42,15 @@ spec:
             cpu: 200m
             memory: 512Mi
       - name: fluent-sidecar
-          image: registry.cn-beijing.aliyuncs.com/k8s-mqm/fluentd-elasticsearch:v2.1.0
-          env:
-            - name: FLUENTD_ARGS
-              value: -c /etc/fluentd-config/fluentd.conf
-          volumeMounts:
-            - name: varlog
-              mountPath: /var/log
-            - name: config-volume
-              mountPath: /etc/fluentd-config
+        image: registry.cn-beijing.aliyuncs.com/k8s-mqm/fluentd-elasticsearch:v2.1.0
+        env:
+          - name: FLUENTD_ARGS
+            value: -c /etc/fluentd-config/fluentd.conf
+        volumeMounts:
+          - name: varlog
+            mountPath: /var/log
+          - name: config-volume
+            mountPath: /etc/fluentd-config
       volumes:
         - name: varlog
           emptyDir: {}
