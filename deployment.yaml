@@ -41,6 +41,9 @@ spec:
           limits:
             cpu: 200m
             memory: 512Mi
+        volumeMounts:
+          - name: varlog
+            mountPath: /var/log
       - name: fluent-sidecar
         image: registry.cn-beijing.aliyuncs.com/k8s-mqm/fluentd-elasticsearch:v2.1.0
         env:
