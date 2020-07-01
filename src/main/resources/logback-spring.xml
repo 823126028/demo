@@ -5,7 +5,7 @@
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>[%thread] %-5level %logger{50} - %msg%n
+            <pattern>[%date{yyyy-MM-dd HH:mm:ss}][%thread] %-5level %logger{50} - %msg%n
             </pattern>
         </layout>
     </appender>
@@ -18,7 +18,7 @@
             <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>[%thread] %-5level %logger{50} - %msg%n
+            <pattern>[%date{yyyy-MM-dd HH:mm:ss}][%thread] %-5level %logger{50} - %msg%n
             </pattern>
         </layout>
     </appender>
