@@ -15,17 +15,17 @@ public class InteractiveController {
     private static final Logger logger = LoggerFactory.getLogger(InteractiveController.class);
     @RequestMapping("/")
     public String sayHello() throws UnknownHostException {
-        logger.info("hello, mcloud:" + getHost());
+        logger.info("hello, mcloud host:" + getHost());
         return "hello, mcloud";
     }
     @RequestMapping("/version")
     public String version() throws UnknownHostException {
-       logger.info("mcloud:0.0.1" + getHost());
+       logger.info("mcloud:0.0.1 host:" + getHost());
         return "mcloud:0.0.1";
     }
     @RequestMapping("/errors")
     public String errors() throws UnknownHostException {
-        logger.info("visit error" + getHost());
+        logger.info("visit error host:" + getHost());
         return "mcloud:error:0.0.1";
     }
 
