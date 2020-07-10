@@ -48,6 +48,13 @@ spec:
             mountPath: /var/log
       - name: fluent-sidecar
         image: registry.cn-beijing.aliyuncs.com/k8s-mqm/fluentd-elasticsearch:v2.1.0
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
         env:
           - name: FLUENTD_ARGS
             value: -c /etc/fluentd-config/fluentd.conf
