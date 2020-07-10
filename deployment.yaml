@@ -39,7 +39,7 @@ spec:
         resources:
           limits:
             cpu: 400m
-            memory: 512Mi
+            memory: 256Mi
           requests:
             cpu: 400m
             memory: 256Mi
@@ -98,7 +98,7 @@ spec:
           resources:
             limits:
               cpu: 400m
-              memory: 512Mi
+              memory: 256Mi
             requests:
               cpu: 400m
               memory: 256Mi
@@ -107,6 +107,13 @@ spec:
               mountPath: /var/log
         - name: fluent-sidecar
           image: registry.cn-beijing.aliyuncs.com/k8s-mqm/fluentd-elasticsearch:v2.1.0
+          resources:
+            limits:
+              cpu: 100m
+              memory: 100Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
           env:
             - name: FLUENTD_ARGS
               value: -c /etc/fluentd-config/fluentd.conf
