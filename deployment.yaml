@@ -43,7 +43,7 @@ spec:
           requests:
             cpu: 200m
             memory: 600Mi
-      - image: 127.0.0.1:34370/example-bluehouse:4
+      - image: 127.0.0.1:34370/example-bluehouse:1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -88,7 +88,7 @@ spec:
           requests:
             cpu: 75m
             memory: 100Mi
-      - image: 127.0.0.1:34370/example-bluehouse:4
+      - image: 127.0.0.1:34370/example-bluehouse:1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
