@@ -63,6 +63,14 @@ spec:
           requests:
             cpu: 75m
             memory: 100Mi
+        livenessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 2
+          successThreshold: 1
+          tcpSocket:
+            port: 8080
+          timeoutSeconds: 2
         env:
           - name: FLUENTD_ARGS
             value: -c /etc/fluentd-config/fluentd.conf
