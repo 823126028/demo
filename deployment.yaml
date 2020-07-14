@@ -43,13 +43,38 @@ spec:
           requests:
             cpu: 200m
             memory: 600Mi
+      - image: 127.0.0.1:34370/example-bluehouse:4
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
-          initialDelaySeconds: 30
-          periodSeconds: 2
-          successThreshold: 1
-          tcpSocket:
+          httpGet:
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
+            path: /version
             port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 2
+        name: demo
+        ports:
+          - containerPort: 8080
+            name: 8080tcp02
+            protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
+            path: /version
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          successThreshold: 2
           timeoutSeconds: 2
         volumeMounts:
           - name: varlog
@@ -63,13 +88,38 @@ spec:
           requests:
             cpu: 75m
             memory: 100Mi
+      - image: 127.0.0.1:34370/example-bluehouse:4
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
-          initialDelaySeconds: 30
-          periodSeconds: 2
-          successThreshold: 1
-          tcpSocket:
+          httpGet:
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
+            path: /version
             port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 2
+        name: demo
+        ports:
+          - containerPort: 8080
+            name: 8080tcp02
+            protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            httpHeaders:
+              - name: Host
+                value: 127.0.0.1
+            path: /version
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          successThreshold: 2
           timeoutSeconds: 2
         env:
           - name: FLUENTD_ARGS
