@@ -39,10 +39,10 @@ spec:
         resources:
           limits:
             cpu: 200m
-            memory: 256Mi
+            memory: 600Mi
           requests:
             cpu: 200m
-            memory: 256Mi
+            memory: 600Mi
         volumeMounts:
           - name: varlog
             mountPath: /var/log
@@ -98,10 +98,10 @@ spec:
           resources:
             limits:
               cpu: 200m
-              memory: 256Mi
+              memory: 600Mi
             requests:
               cpu: 200m
-              memory: 256Mi
+              memory: 600Mi
           volumeMounts:
             - name: varlog
               mountPath: /var/log
@@ -110,10 +110,10 @@ spec:
           resources:
             limits:
               cpu: 70m
-              memory: 128Mi
+              memory: 75Mi
             requests:
               cpu: 70m
-              memory: 128Mi
+              memory: 75Mi
           env:
             - name: FLUENTD_ARGS
               value: -c /etc/fluentd-config/fluentd.conf
