@@ -43,8 +43,6 @@ spec:
           requests:
             cpu: 200m
             memory: 600Mi
-      - image: 127.0.0.1:34370/example-bluehouse:1
-        imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -58,11 +56,6 @@ spec:
           periodSeconds: 30
           successThreshold: 1
           timeoutSeconds: 2
-        name: demo
-        ports:
-          - containerPort: 8080
-            name: 8080tcp02
-            protocol: TCP
         readinessProbe:
           failureThreshold: 3
           httpGet:
@@ -103,11 +96,6 @@ spec:
           periodSeconds: 30
           successThreshold: 1
           timeoutSeconds: 2
-        name: demo
-        ports:
-          - containerPort: 8080
-            name: 8080tcp02
-            protocol: TCP
         readinessProbe:
           failureThreshold: 3
           httpGet:
