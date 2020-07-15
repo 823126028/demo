@@ -18,6 +18,7 @@ metadata:
   labels:
     app: xy-pay
 spec:
+  #副本个数
   replicas: 2
   selector:
     matchLabels:
@@ -29,13 +30,16 @@ spec:
     spec:
       imagePullSecrets:
       - name: pipeline-docker-registry
+      #选择广州的机器发布
       nodeSelector:
         union: guangzhou
       containers:
       - name: demo
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        #容器开放的port
         ports:
         - containerPort: 8080
+        #资源地址
         resources:
           limits:
             cpu: 200m
@@ -43,6 +47,7 @@ spec:
           requests:
             cpu: 200m
             memory: 600Mi
+        #设置探活指针
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -69,9 +74,11 @@ spec:
           periodSeconds: 30
           successThreshold: 2
           timeoutSeconds: 2
+        #挂载磁盘
         volumeMounts:
           - name: varlog
             mountPath: /var/log
+      #sidecar 上传日志
       - name: fluent-sidecar
         image: registry.cn-beijing.aliyuncs.com/k8s-mqm/fluentd-elasticsearch:v2.1.0
         resources:
